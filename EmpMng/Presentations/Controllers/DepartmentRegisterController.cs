@@ -24,7 +24,7 @@ public class DepartmentRegisterController : Controller
     /// <summary>
     /// TempDataを通じて一時的にViewModelを保存・復元するためのクラス
     /// </summary>
-    private readonly TempDataStore<DepartmentRegisterViewModel> _empDataStore;
+    private readonly TempDataStore<DepartmentRegisterViewModel> _deptDataStore;
 
     /// <summary>
     /// コンストラクタ
@@ -33,7 +33,7 @@ public class DepartmentRegisterController : Controller
     /// <param name="departmentRegisterService">従業員登録サービスインターフェイス</param>
     /// <param name="departmentRegisterViewModelAdapter">従業員登録ViewModelをEmployeeに変換するアダプター</param>
     /// <param name="deptDataStore">TempDataを通じて一時的にViewModelを保存・復元するためのクラス</param>
-    public DepartmentRegisterController RegisterController(
+    public DepartmentRegisterController(
         ILogger<DepartmentRegisterController> logger,
         IDepartmentRegisterService employeeRegisterService,
         DepartmentRegisterViewModelAdapter employeeRegisterViewModelAdapter,
