@@ -11,8 +11,8 @@
                 <tbody>
                     <tr>
                         @*EmployeeRegisterViewModelのNameプロパティの値を表示する*@
-                        <td class="fw-bold">@Html.DisplayNameFor(m => m.Name)</td>
-                        <td>@Html.DisplayFor(m => m.Name)</td>
+                        <td class="fw-bold">@Html.DisplayNameFor(m => m.DeptId)</td>
+                        <td>@Html.DisplayFor(m => m.DeptId)</td>
                     </tr>
                     <tr>
                         @*EmployeeRegisterViewModelのDeptNameプロパティの値を表示する*@
@@ -25,8 +25,6 @@
             <form>
                 @*POSTリクエスト(Register/Back)に値を渡すためにhidden属性を使う*@
                 @*これがないと、次の画面で値が消えてしまう*@
-                <input type="hidden" asp-for="Name" />
-                <input type="hidden" asp-for="DeptId" />
                 <input type="hidden" asp-for="DeptName" />
                 @*formaction/formmethod ボタンごとに送信先を変える*@
                 @*同じフォーム内で[登録]と[戻る]を分岐できる*@

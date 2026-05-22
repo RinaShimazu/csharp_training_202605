@@ -12,10 +12,10 @@ public class DepartmentEntity
     /// </summary> 
     [Key]
     [Column("id")]
-    public int Id { get; set; }
+    public int DeptId { get; set; }
     /// <summary>
     /// 部署名
     /// </summary> 
     [Column("name")]
-    public string Name { get; set; } = string.Empty;
+    public string DeptName { get; set; } = string.Empty;
 }

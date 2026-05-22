@@ -14,15 +14,10 @@
             <form asp-action="Confirm" asp-controller="DepartmentRegister" method="post">
                 <div class="mb-3">
                     @* Tag Helperがname属性やid属性を自動生成 Model Bindingに必要なHTMLが作成される*@
-                    <label asp-for="Name" class="form-label"></label>
-                    <input asp-for="Name" class="form-control" />
+                    <label asp-for="DeptName" class="form-label"></label>
+                    <input asp-for="DeptName" class="form-control" />
                     @*バリデーション(ModelState)エラーを表示する*@
-                    <span asp-validation-for="Name" class="text-danger"></span>
-                </div>
-                <div class="mb-3">
-                    <label asp-for="DeptId" class="form-label"></label>
-                    @*asp-itemsはSelectListItemのリストを受け取る*@
-                    <select asp-for="DeptId" asp-items="Model.Departments" class="form-control"></select>
+                    <span asp-validation-for="DeptName" class="text-danger"></span>
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">完了</button>

@@ -12,7 +12,7 @@ public class DepartmentRegisterViewModel
     /// </summary>
     [Display(Name = "部門名")]
     [Required(ErrorMessage = "{0}は入力必須です。")]
-    public string? Name { get; set; } = string.Empty;
+    public string? DeptName { get; set; } = string.Empty;
 
 
     /// <summary>
@@ -20,7 +20,7 @@ public class DepartmentRegisterViewModel
     /// </summary>
     [Display(Name = "部門番号")]
     [Required(ErrorMessage = "{0}は入力必須です。")]
-    public int Id { get; set; }
+    public int DeptId { get; set; }
 
     /// <summary>
     /// 部署のリストをSelectListItemのリストに変換してプロパティに設定する
@@ -47,6 +47,6 @@ public class DepartmentRegisterViewModel
 
     public override string ToString()
     {
-        return $"Name={Name} , Id={Id}";
+        return $"Name={DeptName} , Id={DeptId}";
     }
 }

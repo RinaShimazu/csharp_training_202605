@@ -17,7 +17,7 @@ public class DepartmentRegisterViewModelAdapter : IRestorer<Department, Departme
     public Department Restore(DepartmentRegisterViewModel target)
     {
         // Department(部署)を作成する
-        var department = new Department(target.Id!, target.Name);
+        var department = new Department(target.DeptId!, target.DeptName);
         return department;
     }
 }
