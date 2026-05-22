@@ -77,14 +77,20 @@ public class EmployeeRegisterController : Controller
             return View("Enter", viewModel);
         }
 
-        // 選択された部署のIdで部署データを取得する
-        var department = _employeeRegisterService.GetById(viewModel.DeptId ?? 0);
-        _logger.LogInformation($"部署Id:{viewModel.DeptId ?? 0}の部署を取得する");
-
-        // 【修正】viewModel.Nameを上書きするのをやめ、新設したDeptNameに部署名を代入します
-        if (department != null)
+        if (viewModel.DeptId.HasValue && viewModel.DeptId.Value != 0)
         {
-            viewModel.DeptName = string.IsNullOrEmpty(department.Name) ? "(名称未設定)" : department.Name;
+            var department = _employeeRegisterService.GetById(viewModel.DeptId.Value);
+            _logger.LogInformation($"部署Id:{viewModel.DeptId.Value}の部署を取得する");
+
+            if (department != null)
+            {
+                viewModel.DeptName = string.IsNullOrEmpty(department.Name) ? "(名称未設定)" : department.Name;
+            }
+        }
+        else
+        {
+            viewModel.DeptName = "未選択";
+            viewModel.DeptId = null;
         }
 
         // 確認画面を表示する

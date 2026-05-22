@@ -20,11 +20,10 @@ public class EmployeeRegisterViewModel
     /// 所属部署ID
     /// </summary>
     [Display(Name = "所属部署")]
-    [Required(ErrorMessage = "{0}は選択必須です。")]
-    public int? DeptId { get; set; } = 0;
+    public int? DeptId { get; set; } = null;
 
     /// <summary>
-    /// 【追加】所属部署名
+    /// 所属部署名
     /// </summary>
     [Display(Name = "所属部署")]
     public string? DeptName { get; set; } = string.Empty;
@@ -36,7 +35,7 @@ public class EmployeeRegisterViewModel
     public int Gender { get; set; }
 
     /// <summary>
-    /// 【修正】性別の選択肢リスト
+    /// 性別の選択肢リスト
     /// </summary>
     public List<SelectListItem> GenderList { get; set; } = new List<SelectListItem>
     {
