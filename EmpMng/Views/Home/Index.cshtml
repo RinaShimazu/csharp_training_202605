@@ -3,16 +3,16 @@
 }
 
 <div class="text-center mt-5">
-    <h1 class="display-4">従業員管理システムへようこそ</h1>
+    <h1 class="display-4">社員管理システムへようこそ</h1>
     <p class="lead">メニューまたは下のボタンから操作を選択してください。</p>
 
-    <!-- さっきの大きなボタンはここに置くと、ホーム画面だけに綺麗に表示されます -->
     <div class="d-flex justify-content-center gap-3 mt-4">
         <a class="btn btn-primary btn-lg" asp-controller="EmployeeRegister" asp-action="Enter">
             👤 社員管理を始める
         </a>
+        <br>
         <a class="btn btn-secondary btn-lg" asp-controller="DepartmentRegister" asp-action="Enter">
-            🏢 部署管理を始める
+            🏢 部門管理を始める
         </a>
     </div>
 </div>

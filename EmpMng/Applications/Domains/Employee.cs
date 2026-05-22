@@ -8,7 +8,6 @@ public class Employee
     public int? Id { get; private set; } // 社員Id
     public string Name { get; private set; } = string.Empty; // 氏名
     public Department? Department { get; private set; } // 所属部署（null可）
-
     private const int MaxLength = 20;
 
     /// <summary>
@@ -43,6 +42,8 @@ public class Employee
         if (name.Length > MaxLength)
             throw new DomainException($"氏名は{MaxLength}文字以内で入力してください");
     }
+
+
 
     /// <summary>
     /// 氏名を変更する

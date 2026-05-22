@@ -1,9 +1,11 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using EmpMng.Applications.Domains;
+
 namespace EmpMng.Presentations.ViewModels;
+
 /// <summary>
-/// 部署登録ViewModelクラス
+/// 従業員登録ViewModelクラス
 /// </summary>
 public class EmployeeRegisterViewModel
 {
@@ -13,18 +15,36 @@ public class EmployeeRegisterViewModel
     [Display(Name = "氏名")]
     [Required(ErrorMessage = "{0}は入力必須です。")]
     public string? Name { get; set; } = string.Empty;
+
     /// <summary>
-    /// 所属部署
+    /// 所属部署ID
     /// </summary>
     [Display(Name = "所属部署")]
     [Required(ErrorMessage = "{0}は選択必須です。")]
     public int? DeptId { get; set; } = 0;
 
     /// <summary>
-    /// 選択された部署名
+    /// 【追加】所属部署名
     /// </summary>
-    [Display(Name = "部署名")]
+    [Display(Name = "所属部署")]
     public string? DeptName { get; set; } = string.Empty;
+
+    /// <summary>
+    /// 選択された性別の値
+    /// </summary>
+    [Display(Name = "性別")]
+    public int Gender { get; set; }
+
+    /// <summary>
+    /// 【修正】性別の選択肢リスト
+    /// </summary>
+    public List<SelectListItem> GenderList { get; set; } = new List<SelectListItem>
+    {
+        new SelectListItem{ Text="--未選択--", Value="0" , Selected = true },
+        new SelectListItem{ Text= "男性", Value= "1" },
+        new SelectListItem{ Text= "女性", Value= "2" },
+        new SelectListItem{ Text= "その他", Value= "3" },
+    };
 
     /// <summary>
     /// 部署のリストをSelectListItemのリストに変換してプロパティに設定する
@@ -46,11 +66,12 @@ public class EmployeeRegisterViewModel
         }
         Departments = selectItems;
     }
+
     // 部署のリスト
     public List<SelectListItem>? Departments { get; set; } = null;
 
     public override string ToString()
     {
-        return $"Name={Name} , DeptId={DeptId} , DeptName={DeptName} , Departments={Departments}";
+        return $"Name={Name} , DeptId={DeptId} , DeptName={DeptName} , Departments={Departments}, Gender={Gender}";
     }
 }

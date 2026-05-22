@@ -3,7 +3,7 @@
 @* View が受け取るデータ型（ViewModel）を宣言asp-for はこの型のプロパティと結びつける *@
 @model EmployeeRegisterViewModel;
 @{
-    ViewData["Title"] = "従業員登録(入力)";
+    ViewData["Title"] = "社員登録(入力)";
 }
 <h2 class="text-center mt-4">@ViewData["Title"]</h2>
 
@@ -24,9 +24,15 @@
                     @*asp-itemsはSelectListItemのリストを受け取る*@
                     <select asp-for="DeptId" asp-items="Model.Departments" class="form-control"></select>
                 </div>
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary">完了</button>
+                <div class="form-group">
+                    <label>性別</label>
+                    <select asp-for="Gender" asp-items="Model.GenderList" class="form-control"></select>
                 </div>
+                <p>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">完了</button>
+                    </div>
+                </p>
             </form>
         </div>
     </div>
