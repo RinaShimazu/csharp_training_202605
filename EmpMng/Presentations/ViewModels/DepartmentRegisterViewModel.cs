@@ -56,8 +56,8 @@ public class DepartmentRegisterViewModel
     public List<SelectListItem> AreaList { get; set; } = new List<SelectListItem>
     {
         new SelectListItem{ Text="--未選択--", Value="" , Selected = true },
-        new SelectListItem{ Text= "東京", Value= "0" },
-        new SelectListItem{ Text= "大阪", Value= "1" }
+        new SelectListItem{ Text= "東京", Value= "1" },
+        new SelectListItem{ Text= "大阪", Value= "2" }
     };
 
     public override string ToString()

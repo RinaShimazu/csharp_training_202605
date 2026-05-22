@@ -18,7 +18,7 @@
                         @*EmployeeRegisterViewModelのNameプロパティの値を表示する*@
                         <td class="fw-bold">@Html.DisplayNameFor(m => m.Area)</td>
                         <td>
-                            @(Model.Area == 0 ? "東京" : Model.Area == 1 ? "大阪" : "--未選択--")
+                            @(Model.Area == 1 ? "東京" : Model.Area == 2 ? "大阪" : "--未選択--")
                         </td>
                     </tr>
                 </tbody>
