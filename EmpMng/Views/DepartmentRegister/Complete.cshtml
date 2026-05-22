@@ -17,6 +17,13 @@
                         <td class="fw-bold">@Html.DisplayNameFor(m => m.DeptName)</td>
                         <td>@Html.DisplayFor(m => m.DeptName)</td>
                     </tr>
+                    <tr>
+                        @*EmployeeRegisterViewModelのNameプロパティの値を表示する*@
+                        <td class="fw-bold">@Html.DisplayNameFor(m => m.Area)</td>
+                        <td>
+                            @(Model.Area == 0 ? "東京" : Model.Area == 1 ? "大阪" : "--未選択--")
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             @*入力画面に戻る*@

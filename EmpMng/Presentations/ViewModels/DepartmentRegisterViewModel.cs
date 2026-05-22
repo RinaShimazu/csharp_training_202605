@@ -45,8 +45,24 @@ public class DepartmentRegisterViewModel
     // 部署のリスト
     public List<SelectListItem>? Departments { get; set; } = null;
 
+
+    [Display(Name = "勤務地")]
+    [Required(ErrorMessage = "{0}は入力必須です。")]
+    public int? Area { get; set; } = null;
+
+    /// <summary>
+    /// 勤務地の選択肢リスト
+    /// </summary>
+    public List<SelectListItem> AreaList { get; set; } = new List<SelectListItem>
+    {
+        new SelectListItem{ Text="--未選択--", Value="" , Selected = true },
+        new SelectListItem{ Text= "東京", Value= "0" },
+        new SelectListItem{ Text= "大阪", Value= "1" }
+    };
+
     public override string ToString()
     {
-        return $"Name={DeptName} , Id={DeptId}";
+        return $"Name={DeptName} , Area={Area}";
     }
+
 }
