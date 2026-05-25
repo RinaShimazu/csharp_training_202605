@@ -9,6 +9,7 @@ public class Employee
     public string Name { get; private set; } = string.Empty; // 氏名
     public Department? Department { get; private set; } // 所属部署（null可）
     private const int MaxLength = 20;
+    private const int MinLength = 2;
 
     /// <summary>
     /// コンストラクタ
@@ -39,8 +40,8 @@ public class Employee
     {
         if (string.IsNullOrWhiteSpace(name))
             throw new DomainException("氏名は必須です");
-        if (name.Length > MaxLength)
-            throw new DomainException($"氏名は{MaxLength}文字以内で入力してください");
+        if (name.Length > MaxLength || name.Length < MinLength)
+            throw new DomainException($"氏名は{MinLength}～{MaxLength}文字で入力してください");
     }
 
 

@@ -1,0 +1,20 @@
+@* クラスの名前空間を指定する(C#と同じ) *@
+@using EmpMng.Presentations.ViewModels
+@{
+    ViewData["Title"] = "選択(部門)";
+}
+
+<div class="text-center mt-5">
+    <h1 class="display-4">部門管理メニュー</h1>
+    <p class="lead">下のボタンから操作を選択してください。</p>
+
+    <div class="d-flex justify-content-center gap-3 mt-4">
+        <a class="btn btn-primary btn-lg" asp-controller="DepartmentRegister" asp-action="Enter">
+            部門登録を始める
+        </a>
+        <br>
+        <a class="btn btn-secondary btn-lg" asp-controller="AllDepartment" asp-action="Show">
+            部門一覧を表示する
+        </a>
+    </div>
+</div>
