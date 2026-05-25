@@ -12,20 +12,20 @@ public class EmployeeRegisterViewModel
     /// <summary>
     /// 氏名
     /// </summary>
-    [Display(Name = "氏名")]
+    [Display(Name = "社員名")]
     [Required(ErrorMessage = "{0}は入力必須です。")]
     public string? Name { get; set; } = string.Empty;
 
     /// <summary>
     /// 所属部署ID
     /// </summary>
-    [Display(Name = "所属部署")]
+    [Display(Name = "所属部門")]
     public int? DeptId { get; set; } = null;
 
     /// <summary>
     /// 所属部署名
     /// </summary>
-    [Display(Name = "所属部署")]
+    [Display(Name = "所属部門")]
     public string? DeptName { get; set; } = string.Empty;
 
     /// <summary>
