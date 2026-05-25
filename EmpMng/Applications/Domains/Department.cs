@@ -1,4 +1,5 @@
 using EmpMng.Exceptions;
+using Microsoft.AspNetCore.Mvc;
 namespace EmpMng.Applications.Domains;
 /// <summary>
 /// 所属部署を表すドメインオブジェクト
@@ -7,6 +8,7 @@ public class Department
 {
     public int? Id { get; private set; }      // 部署Id
     public string? Name { get; private set; } = string.Empty;    // 部署名
+    public int? Area { get; private set; }
     private const int MaxLength = 20; // 部署名の長さ
     private const int MinLength = 2; // 部署名の長さ
     /// <summary>
@@ -14,18 +16,19 @@ public class Department
     /// </summary>
     /// <param name="id">部署Id</param>
     /// <param name="name">部署名</param>
-    public Department(int? id, string? name)
+    public Department(int? id, string? name, int area)
     {
         // 部署名のルール検証
         validateDepartmentName(name);
         Id = id;
         Name = name;
+        Area = area;
     }
     /// <summary>
     /// コンストラクタ
     /// </summary>
     /// <param name="name">部署名</param>
-    public Department(string? name) : this(null, name) { }
+    public Department(string? name) : this(null, name, 0) { }
     /// <summary>
     /// コンストラクタ
     /// </summary>

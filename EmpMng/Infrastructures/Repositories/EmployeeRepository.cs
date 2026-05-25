@@ -47,4 +47,23 @@ public class EmployeeRepository : IEmployeeRepository
                 "従業員の永続化ができませんでした。", e);
         }
     }
+
+    public List<Employee> FindAll()
+    {
+        try
+        {
+            var entities = _context.Employees.ToList();
+            var results = new List<Employee>();
+            foreach (var entity in entities)
+            {
+                results.Add(_adapter.Restore(entity));
+            }
+            return results;
+        }
+        catch (Exception e)
+        {
+            throw new InternalException(
+                "すべての社員を取得できませんでした。", e);
+        }
+    }
 }

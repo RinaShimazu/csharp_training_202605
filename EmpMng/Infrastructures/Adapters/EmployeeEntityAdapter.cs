@@ -1,14 +1,14 @@
 using EmpMng.Applications.Adapters;
 using EmpMng.Applications.Domains;
 using EmpMng.Infrastructures.Entities;
+
 namespace EmpMng.Infrastructures.Adapters;
+
 /// <summary>
 /// ドメインオブジェクト:EmployeeとEmployeeEntityの相互変換インターフェイスの実装
 /// </summary>
-/// <typeparam name="TDomain">Employee</typeparam>
-/// <typeparam name="TTarget">EmployeeEntity</typeparam>
 public class EmployeeEntityAdapter :
-IConverter<Employee, EmployeeEntity>, IRestorer<Employee, EmployeeEntity>
+    IConverter<Employee, EmployeeEntity>, IRestorer<Employee, EmployeeEntity>
 {
     /// <summary>
     /// ドメインオブジェクト:EmployeeをEmployeeEntityに変換する
@@ -19,16 +19,21 @@ IConverter<Employee, EmployeeEntity>, IRestorer<Employee, EmployeeEntity>
     {
         var entity = new EmployeeEntity
         {
-            EmpName = domain.Name
+            EmpName = domain.Name,
+            // 💡 性別(Gender)を無条件、またはドメインの仕様に合わせてセット
+            Gender = domain.Gender
         };
+
         if (domain.Id != null)
         {
             entity.EmpId = domain.Id.Value;
         }
+
         if (domain.Department != null)
         {
             entity.DeptId = domain.Department.Id;
         }
+
         return entity;
     }
 
@@ -39,11 +44,20 @@ IConverter<Employee, EmployeeEntity>, IRestorer<Employee, EmployeeEntity>
     /// <returns>ドメインオブジェクト:Employee</returns>
     public Employee Restore(EmployeeEntity target)
     {
+
+        Department? domainDept = null;
+        if (target.DeptId.HasValue)
+        {
+            domainDept = new Department(target.DeptId.Value, null, 0);
+        }
+
         var employee = new Employee(
             target.EmpId,
             target.EmpName,
-            null
+            domainDept,
+            target.Gender
         );
+
         return employee;
     }
 }

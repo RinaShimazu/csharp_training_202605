@@ -5,6 +5,7 @@ namespace EmpMng.Applications.Repositories;
 /// </summary>
 public interface IEmployeeRepository
 {
+    List<Employee> FindAll();
     /// <summary>
     /// 従業員を永続化する
     /// </summary>

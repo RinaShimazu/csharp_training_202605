@@ -18,4 +18,6 @@ public class DepartmentEntity
     /// </summary> 
     [Column("name")]
     public string DeptName { get; set; } = string.Empty;
+    [Column("area_id")]
+    public int Area { get; set; }
 }

@@ -23,4 +23,6 @@ public class EmployeeEntity
     /// </summary>
     [Column("dept_id")]
     public int? DeptId { get; set; }
+    [Column("gender_id")]
+    public int Gender { get; set; }
 }

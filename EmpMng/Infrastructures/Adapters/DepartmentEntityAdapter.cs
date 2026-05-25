@@ -27,6 +27,12 @@ IConverter<Department, DepartmentEntity>, IRestorer<Department, DepartmentEntity
             // 明示的にValueを使う
             entity.DeptId = domain.Id.Value;
         }
+        if (domain.Area != null)
+        {
+            // int?（nullable int）から int への暗黙的な変換ができない
+            // 明示的にValueを使う
+            entity.DeptId = domain.Area.Value;
+        }
         return entity;
     }
 
@@ -37,7 +43,7 @@ IConverter<Department, DepartmentEntity>, IRestorer<Department, DepartmentEntity
     /// <returns>ドメインオブジェクト:Department</returns>
     public Department Restore(DepartmentEntity target)
     {
-        var department = new Department(target.DeptId, target.DeptName!);
+        var department = new Department(target.DeptId, target.DeptName!, target.Area);
         return department;
     }
 }
