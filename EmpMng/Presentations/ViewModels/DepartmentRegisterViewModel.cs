@@ -8,10 +8,11 @@ namespace EmpMng.Presentations.ViewModels;
 public class DepartmentRegisterViewModel
 {
     /// <summary>
-    /// 氏名
+    /// 部門名
     /// </summary>
     [Display(Name = "部門名")]
     [Required(ErrorMessage = "{0}は入力必須です。")]
+    [StringLength(20, MinimumLength = 2, ErrorMessage = "部門名は2～20文字で入力してください")]
     public string? DeptName { get; set; } = string.Empty;
 
 

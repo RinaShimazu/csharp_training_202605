@@ -14,6 +14,7 @@ public class EmployeeRegisterViewModel
     /// </summary>
     [Display(Name = "社員名")]
     [Required(ErrorMessage = "{0}は入力必須です。")]
+    [StringLength(20, MinimumLength = 2, ErrorMessage = "社員名は2～20文字で入力してください")]
     public string? Name { get; set; } = string.Empty;
 
     /// <summary>
