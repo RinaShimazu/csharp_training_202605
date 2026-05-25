@@ -25,4 +25,7 @@ public class EmployeeEntity
     public int? DeptId { get; set; }
     [Column("gender_id")]
     public int Gender { get; set; }
+    [ForeignKey("DeptId")]
+    public virtual DepartmentEntity? Department { get; set; }
+
 }

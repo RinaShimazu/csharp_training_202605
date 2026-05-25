@@ -4,23 +4,27 @@ using EmpMng.Applications.Domains;
 
 namespace EmpMng.Presentations.Controllers
 {
-    public class DepartmentShowController : Controller
+    public class AllDepartmentController : Controller
     {
-        private readonly IEmployeeRepository _employeeRepository;
+        private readonly IDepartmentRepository _departmentRepository;
 
-        public DepartmentShowController(IEmployeeRepository employeeRepository)
+        public AllDepartmentController(IDepartmentRepository departmentRepository)
         {
-            _employeeRepository = employeeRepository;
+            _departmentRepository = departmentRepository;
         }
 
-        // メニュー画面の asp-action="Show" に対応
         public IActionResult Show()
         {
-            // リポジトリからドメインモデルのリストを取得
-            var employees = _employeeRepository.FindAll();
+            try
+            {
+                List<Department> departments = _departmentRepository.FindAll();
 
-            // Views/AllEmployee/Show.cshtml にデータを渡す
-            return View(employees);
+                return View(departments);
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("DepartmentSelect", "SelectPage");
+            }
         }
     }
 }

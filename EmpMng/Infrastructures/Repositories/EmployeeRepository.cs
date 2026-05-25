@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using EmpMng.Infrastructures.Context;
 using EmpMng.Applications.Domains;
 using EmpMng.Applications.Repositories;
@@ -52,7 +53,10 @@ public class EmployeeRepository : IEmployeeRepository
     {
         try
         {
-            var entities = _context.Employees.ToList();
+            var entities = _context.Employees
+                .Include(e => e.Department)
+                .ToList();
+
             var results = new List<Employee>();
             foreach (var entity in entities)
             {
@@ -62,8 +66,7 @@ public class EmployeeRepository : IEmployeeRepository
         }
         catch (Exception e)
         {
-            throw new InternalException(
-                "すべての社員を取得できませんでした。", e);
+            throw new InternalException("すべての従業員を取得できませんでした。", e);
         }
     }
 }

@@ -44,13 +44,22 @@ public class EmployeeEntityAdapter :
     /// <returns>ドメインオブジェクト:Employee</returns>
     public Employee Restore(EmployeeEntity target)
     {
-
         Department? domainDept = null;
-        if (target.DeptId.HasValue)
+
+        if (target.Department != null)
         {
-            domainDept = new Department(target.DeptId.Value, null, 0);
+            domainDept = new Department(
+                target.Department.DeptId,
+                target.Department.DeptName,
+                target.Department.Area
+            );
+        }
+        else if (target.DeptId.HasValue)
+        {
+            domainDept = new Department(target.DeptId.Value, "部門不明", 0);
         }
 
+        // 組み立てた部署データをドメインに渡す
         var employee = new Employee(
             target.EmpId,
             target.EmpName,
@@ -60,4 +69,5 @@ public class EmployeeEntityAdapter :
 
         return employee;
     }
+
 }

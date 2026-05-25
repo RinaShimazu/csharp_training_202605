@@ -1,25 +1,30 @@
 using Microsoft.AspNetCore.Mvc;
 using EmpMng.Applications.Repositories;
+using EmpMng.Applications.Domains;
 
 namespace EmpMng.Presentations.Controllers
 {
-    public class EmployeeShowController : Controller
+    public class AllEmployeeController : Controller
     {
         private readonly IEmployeeRepository _employeeRepository;
 
-        public EmployeeShowController(IEmployeeRepository employeeRepository)
+        public AllEmployeeController(IEmployeeRepository employeeRepository)
         {
             _employeeRepository = employeeRepository;
         }
 
-        // メニュー画面の asp-action="Show" に対応
         public IActionResult Show()
         {
-            // リポジトリからドメインモデルのリストを取得
-            var employees = _employeeRepository.FindAll();
+            try
+            {
+                List<Employee> employees = _employeeRepository.FindAll();
 
-            // Views/AllEmployee/Show.cshtml にデータを渡す
-            return View(employees);
+                return View(employees);
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("EmployeeSelect", "SelectPage");
+            }
         }
     }
 }
