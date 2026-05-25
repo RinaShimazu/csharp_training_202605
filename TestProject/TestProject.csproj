@@ -24,5 +24,10 @@
     <ProjectReference Include="..\TargetProject\TargetProject.csproj" />
     <ProjectReference Include="..\EmpMng\EmpMng.csproj" />
   </ItemGroup>
+  <ItemGroup>
+  <None Include="sql\init.sql">
+  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </None>
+  </ItemGroup>
 
 </Project>
