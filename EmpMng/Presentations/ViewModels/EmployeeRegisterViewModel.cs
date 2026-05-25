@@ -32,14 +32,15 @@ public class EmployeeRegisterViewModel
     /// 選択された性別の値
     /// </summary>
     [Display(Name = "性別")]
-    public int Gender { get; set; }
+    [Required(ErrorMessage = "{0}は入力必須です。")]
+    public int? Gender { get; set; } = null;
 
     /// <summary>
     /// 性別の選択肢リスト
     /// </summary>
     public List<SelectListItem> GenderList { get; set; } = new List<SelectListItem>
     {
-        new SelectListItem{ Text="--未選択--", Value="0" , Selected = true },
+        new SelectListItem{ Text="--未選択--", Value="" , Selected = true },
         new SelectListItem{ Text= "男性", Value= "1" },
         new SelectListItem{ Text= "女性", Value= "2" },
         new SelectListItem{ Text= "その他", Value= "3" },

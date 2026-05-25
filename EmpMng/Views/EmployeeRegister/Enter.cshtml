@@ -21,7 +21,6 @@
                 </div>
                 <div class="mb-3">
                     <label asp-for="DeptId" class="form-label"></label>
-                    @*asp-itemsはSelectListItemのリストを受け取る*@
                     <select asp-for="DeptId" asp-items="Model.Departments" class="form-control">
                         <option value="">--未選択--</option>
                     </select>
@@ -29,6 +28,8 @@
                 <div class="form-group">
                     <label>性別</label>
                     <select asp-for="Gender" asp-items="Model.GenderList" class="form-control"></select>
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+
                 </div>
                 <p>
                     <div class="text-center">
