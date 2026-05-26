@@ -21,18 +21,17 @@ IConverter<Department, DepartmentEntity>, IRestorer<Department, DepartmentEntity
         {
             DeptName = domain.Name!,
         };
+
         if (domain.Id != null)
         {
-            // int?（nullable int）から int への暗黙的な変換ができない
-            // 明示的にValueを使う
             entity.DeptId = domain.Id.Value;
         }
+
         if (domain.Area != null)
         {
-            // int?（nullable int）から int への暗黙的な変換ができない
-            // 明示的にValueを使う
-            entity.DeptId = domain.Area.Value;
+            entity.Area = domain.Area.Value;
         }
+
         return entity;
     }
 

@@ -43,7 +43,7 @@ public class DepartmentRepository : IDepartmentRepository
         catch (Exception e)
         {
             throw new InternalException(
-                "すべての部署を取得できませんでした。", e);
+                "すべての部門を取得できませんでした。", e);
         }
     }
 
@@ -66,7 +66,7 @@ public class DepartmentRepository : IDepartmentRepository
         catch (Exception e)
         {
             throw new InternalException(
-                "指定された部署Idの部署を取得できませんでした。", e);
+                "指定された部門番号の部門を取得できませんでした。", e);
         }
     }
     public void Create(Department department)
@@ -80,7 +80,7 @@ public class DepartmentRepository : IDepartmentRepository
         catch (Exception e)
         {
             throw new InternalException(
-                "従業員の永続化ができませんでした。", e);
+                "部門の永続化ができませんでした。", e);
         }
     }
 }
