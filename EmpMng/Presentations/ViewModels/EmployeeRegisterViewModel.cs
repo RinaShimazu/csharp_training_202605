@@ -71,6 +71,14 @@ public class EmployeeRegisterViewModel
     // 部署のリスト
     public List<SelectListItem>? Departments { get; set; } = null;
 
+    public int? EmpId { get; set; }
+
+    public string? EmpName
+    {
+        get => Name;
+        set => Name = value;
+    }
+
     public override string ToString()
     {
         return $"Name={Name} , DeptId={DeptId} , DeptName={DeptName} , Departments={Departments}, Gender={Gender}";

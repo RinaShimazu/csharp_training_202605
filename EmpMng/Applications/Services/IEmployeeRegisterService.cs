@@ -23,4 +23,6 @@ public interface IEmployeeRegisterService
     /// </summary>
     /// <param name="employee"></param>
     void Register(Employee employee);
+    Employee GetEmployeeId(int id);
+    void UpdateEmployeeId(Employee employee);
 }

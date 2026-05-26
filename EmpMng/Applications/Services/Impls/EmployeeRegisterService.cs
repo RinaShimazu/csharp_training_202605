@@ -52,6 +52,15 @@ public class EmployeeRegisterService : IEmployeeRegisterService
         }
         return result;
     }
+    public Employee GetEmployeeId(int id)
+    {
+        var result = _employeeRepository.FindById(id);
+        if (result == null)
+        {
+            throw new NotFoundException($"社員番号{id}に該当する社員は存在しません");
+        }
+        return result;
+    }
 
     /// <summary>
     /// すべての部署を取得する
@@ -74,6 +83,24 @@ public class EmployeeRegisterService : IEmployeeRegisterService
             _context.Database.BeginTransaction();
             // 従業員の登録
             _employeeRepository.Create(employee);
+            // トランザクションのコミット
+            _context.Database.CommitTransaction();
+        }
+        catch
+        {
+            // トランザクションのロールバック
+            _context.Database.RollbackTransaction();
+            throw;
+        }
+    }
+    public void UpdateEmployeeId(Employee employee)
+    {
+        try
+        {
+            // トランザクションの開始
+            _context.Database.BeginTransaction();
+            // 従業員の登録
+            _employeeRepository.UpdateEmployeeId(employee);
             // トランザクションのコミット
             _context.Database.CommitTransaction();
         }

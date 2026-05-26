@@ -18,5 +18,6 @@ public interface IDepartmentRepository
     /// 部署を永続化する
     /// </summary>
     /// <param name="department">永続化対象の部署</param>
-    void Create(Department department); // ← セミコロンで終わらせる
+    void Create(Department department);
+    void UpdateById(Department department);
 }
