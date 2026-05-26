@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using static Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 using EmpMng.Applications.Domains;
+using EmpMng.Exceptions;
 using EmpMng.Infrastructures.Adapters;
 using EmpMng.Infrastructures.Context;
 using EmpMng.Infrastructures.Repositories;
@@ -55,6 +56,28 @@ public class EmployeeRepositoryTests
 
         IsNotNull(created);
     }
+    [TestMethod]
+    public void Create_WhenIncorrect()
+    {
+        var beforeCount = _context.Employees.Count();
+
+        var employee = new Employee(null, "森鷗外", null, 0);
+
+        ThrowsException<InternalException>(() =>
+        {
+            _repository.Create(employee);
+        });
+
+        var afterCount = _context.Employees.Count();
+        AreEqual(beforeCount, afterCount);
+
+        var created = _context.Employees
+            .FirstOrDefault(e => e.EmpName == "森鷗外");
+
+        IsNull(created);
+    }
+
+
     [TestMethod]
     public void FindAll_WhenCorrect()
     {

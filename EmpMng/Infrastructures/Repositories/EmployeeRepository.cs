@@ -45,7 +45,7 @@ public class EmployeeRepository : IEmployeeRepository
         catch (Exception e)
         {
             throw new InternalException(
-                "従業員の永続化ができませんでした。", e);
+                "社員の永続化ができませんでした。", e);
         }
     }
 
@@ -66,7 +66,7 @@ public class EmployeeRepository : IEmployeeRepository
         }
         catch (Exception e)
         {
-            throw new InternalException("すべての従業員を取得できませんでした。", e);
+            throw new InternalException("すべての社員を取得できませんでした。", e);
         }
     }
 }

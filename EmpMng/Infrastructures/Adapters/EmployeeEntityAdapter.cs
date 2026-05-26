@@ -20,7 +20,6 @@ public class EmployeeEntityAdapter :
         var entity = new EmployeeEntity
         {
             EmpName = domain.Name,
-            // 💡 性別(Gender)を無条件、またはドメインの仕様に合わせてセット
             Gender = domain.Gender
         };
 
