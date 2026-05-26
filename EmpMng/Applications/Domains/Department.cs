@@ -1,5 +1,6 @@
 using EmpMng.Exceptions;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 namespace EmpMng.Applications.Domains;
 /// <summary>
 /// 所属部署を表すドメインオブジェクト
@@ -28,7 +29,7 @@ public class Department
     /// コンストラクタ
     /// </summary>
     /// <param name="name">部署名</param>
-    public Department(string? name) : this(null, name, 0) { }
+    /// public Department(string? name) : this(null,name,area) { }
     /// <summary>
     /// コンストラクタ
     /// </summary>
