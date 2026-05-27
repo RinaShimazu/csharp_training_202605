@@ -1,0 +1,63 @@
+@using EmpMng.Presentations.ViewModels
+@model EmployeeRegisterViewModel
+@{
+    ViewData["Title"] = "社員登録削除(選択)";
+}
+<h2 class="text-center mt-4">@ViewData["Title"]</h2>
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-4 col-sm-6">
+
+            <form asp-action="LoadEmployee" asp-controller="EmployeeUpdate" method="post"
+                  class="mb-4 p-3 border rounded bg-light">
+                <div class="mb-2">
+                    <label class="form-label font-weight-bold">変更する社員番号を入力</label>
+                    <input asp-for="EmpId" class="form-control" type="number" required />
+                </div>
+                <button type="submit" class="btn btn-info w-100 text-white">社員データを読み込む</button>
+            </form>
+
+            <hr />
+
+            <a asp-action="Confirm" asp-controller="EmployeeUpdate" method="get">
+
+                <input type="hidden" asp-for="EmpId" />
+
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="DeptId" class="form-label"></label>
+                    <select asp-for="DeptId" asp-items="Model.Departments" class="form-control">
+                        <option value="">--未選択--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>性別</label>
+                    <select asp-for="Gender" asp-items="Model.GenderList" class="form-control"></select>
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                </div>
+                <p>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">完了</button>
+                    </div>
+                </p>
+            </a>
+
+            <div class="mt-3">
+                <a asp-controller="SelectPage" asp-action="EmployeeSelect" class="btn btn-secondary">社員管理メニューに戻る</a>
+            </div>
+            <div>
+                <p>
+                    <a asp-action="Index" asp-controller="Home" class="btn btn-secondary mt-3 ms-2">
+                        トップページに戻る
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
