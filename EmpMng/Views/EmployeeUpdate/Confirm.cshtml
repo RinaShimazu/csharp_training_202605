@@ -10,12 +10,10 @@
             <table class="table table-hover">
                 <tbody>
                     <tr>
-                        @*EmployeeRegisterViewModelのNameプロパティの値を表示する*@
                         <td class="fw-bold">@Html.DisplayNameFor(m => m.Name)</td>
                         <td>@Html.DisplayFor(m => m.Name)</td>
                     </tr>
                     <tr>
-                        @*EmployeeRegisterViewModelのDeptNameプロパティの値を表示する*@
                         <td class="fw-bold">@Html.DisplayNameFor(m => m.DeptName)</td>
                         <td>@Html.DisplayFor(m => m.DeptName)</td>
                     </tr>
@@ -30,21 +28,20 @@
             </tbody>
         </table>
 
-        <form>
-            @*POSTリクエスト(Register/Back)に値を渡すためにhidden属性を使う*@
-            @*これがないと、次の画面で値が消えてしまう*@
+        <form asp-action="Complete" asp-controller="EmployeeUpdate" method="post">
             <input type="hidden" asp-for="Name" />
             <input type="hidden" asp-for="DeptId" />
             <input type="hidden" asp-for="DeptName" />
             <input type="hidden" asp-for="Gender" />
 
-            <div class="text-center mt-4">
-                <button type="submit" formaction="@Url.Action("Complete", "EmployeeUpdate")" formmethod="post"
-                        class="btn btn-primary">変更</button>
-                <button type="submit" formaction="@Url.Action("Back", "EmployeeUpdate")" formmethod="post"
-                        class="btn btn-secondary">戻る</button>
-            </div>
+            <p>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">変更</button>
+                </div>
+            </p>
         </form>
+        <div class="mt-3">
+            <a asp-controller="EmployeeUpdate" asp-action="Enter" class="btn btn-secondary">戻る</a>
+        </div>
     </div>
-</div>
 </div>

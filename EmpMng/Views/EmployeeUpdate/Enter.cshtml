@@ -9,7 +9,6 @@
     <div class="row justify-content-center">
         <div class="col-md-4 col-sm-6">
 
-            @* 💡 追加ポイント①: 社員番号を入れて「読み込み」を行うための専用の検索フォーム *@
             <form asp-action="LoadEmployee" asp-controller="EmployeeUpdate" method="post"
                   class="mb-4 p-3 border rounded bg-light">
                 <div class="mb-2">
@@ -22,20 +21,16 @@
 
             <hr />
 
-            @* ここから下は、既存の「完了」ボタンへ送るフォームです *@
             <form asp-action="Confirm" asp-controller="EmployeeUpdate" method="post">
 
-                @* 💡 忘れずにEmpIdを隠しフィールドで保持しておきます *@
                 <input type="hidden" asp-for="EmpId" />
 
                 <div class="mb-3">
                     <label asp-for="Name" class="form-label"></label>
-                    @* 💡 読み込まれるまでは編集できないように readonly をつけても親切です *@
                     <input asp-for="Name" class="form-control" />
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
 
-                <!-- 部署や性別のセレクトボックス（既存のまま） -->
                 <div class="mb-3">
                     <label asp-for="DeptId" class="form-label"></label>
                     <select asp-for="DeptId" asp-items="Model.Departments" class="form-control">
