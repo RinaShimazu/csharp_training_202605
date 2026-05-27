@@ -1,35 +1,31 @@
 @using EmpMng.Presentations.ViewModels
-@model EmployeeRegisterViewModel
+@model DepartmentRegisterViewModel
 @{
-    ViewData["Title"] = "社員登録変更(完了)";
+    ViewData["Title"] = "部門登録変更(完了)";
 }
 <h2 class="text-center mt-4">@ViewData["Title"]</h2>
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6 col-sm-8 text-center">
             <div class="alert alert-success" role="alert">
-                社員情報の変更が完了しました。
+                部門情報の変更が完了しました。
             </div>
             <table class="table table-hover">
                 <tbody>
-                    <tr>
-                        <td class="fw-bold">@Html.DisplayNameFor(m => m.Name)</td>
-                        <td>@Html.DisplayFor(m => m.Name)</td>
-                    </tr>
                     <tr>
                         <td class="fw-bold">@Html.DisplayNameFor(m => m.DeptName)</td>
                         <td>@Html.DisplayFor(m => m.DeptName)</td>
                     </tr>
                     <tr>
-                        <td class="fw-bold">@Html.DisplayNameFor(m => m.Gender)</td>
+                        <td class="fw-bold">@Html.DisplayNameFor(m => m.Area)</td>
                         <td>
-                            @(Model.Gender == 1 ? "男性" : Model.Gender == 2 ? "女性" : Model.Gender == 3 ? "その他" :
+                            @(Model.Area == 1 ? "東京" : Model.Area == 2 ? "大阪" :
                             "--未選択--")
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <a asp-action="Enter" asp-controller="EmployeeUpdate" class="btn btn-primary mt-3">
+            <a asp-action="Enter" asp-controller="DepartmentUpdate" class="btn btn-primary mt-3">
                 続けて変更する
             </a>
             <p>

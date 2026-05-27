@@ -49,8 +49,8 @@ public class DepartmentUpdateController : Controller
     /// <summary>
     /// 入力された社員番号からデータを検索
     /// </summary>
-    [HttpPost("LoadEmployee")]
-    public IActionResult LoadEmployee(DepartmentRegisterViewModel inputModel)
+    [HttpPost("LoadDepartment")]
+    public IActionResult LoadDepartment(DepartmentRegisterViewModel inputModel)
     {
         if (inputModel.DeptId != 0)
         {

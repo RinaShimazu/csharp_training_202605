@@ -50,15 +50,11 @@ public class EmployeeRepository : IEmployeeRepository
     }
     public Employee? FindById(int id)
     {
-        // 💡 1. データベースから指定されたIDの従業員（Entity）を1件取得する
-        //    (部署情報も含めて取得する場合は .Include(e => e.Department) を挟んでください)
         var entity = _context.Employees
-            .FirstOrDefault(e => e.EmpId == id); // ※EmpIdプロパティ名は実際のEntityに合わせてください
+            .FirstOrDefault(e => e.EmpId == id);
 
         if (entity == null) return null;
 
-        // 💡 2. 取得したEntityをドメインモデル（Employee）に復元して返します
-        //    (アタッチメントや復元用メソッド名は実際のものに合わせてください)
         var employee = _adapter.Restore(entity);
         return employee;
     }
@@ -85,10 +81,8 @@ public class EmployeeRepository : IEmployeeRepository
     }
     public void UpdateEmployeeId(Employee employee)
     {
-        // 💡 画面から届いたドメインモデルをEntityに変換します
         var entity = _adapter.Convert(employee);
 
-        // 💡 データベースのデータを更新（アタッチ・アップデート）します
         _context.Employees.Update(entity);
         _context.SaveChanges();
     }
