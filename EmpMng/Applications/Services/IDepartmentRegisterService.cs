@@ -28,4 +28,6 @@ public interface IDepartmentRegisterService
     /// 部門を更新する
     /// </summary>
     void UpdateDepartmentId(Department department);
+
+    void DeleteDepartmentId(Department department);
 }

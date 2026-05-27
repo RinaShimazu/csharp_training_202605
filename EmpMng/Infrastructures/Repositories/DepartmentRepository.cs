@@ -89,4 +89,11 @@ public class DepartmentRepository : IDepartmentRepository
         _context.Departments.Update(entity);
         _context.SaveChanges();
     }
+    public void DeleteDepartmentId(Department department)
+    {
+        var entity = _adapter.Convert(department);
+
+        _context.Departments.Remove(entity);
+        _context.SaveChanges();
+    }
 }

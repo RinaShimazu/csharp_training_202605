@@ -24,4 +24,5 @@ public interface IDepartmentRepository
     /// 部署を更新する
     /// </summary>
     void UpdateDepartmentId(Department department);
+    void DeleteDepartmentId(Department department);
 }

@@ -116,6 +116,9 @@ public class EmployeeRegisterService : IEmployeeRegisterService
         }
     }
 
+    /// <summary>
+    /// 従業員を削除する
+    /// </summary>
     public void DeleteEmployeeId(Employee employee)
     {
         try

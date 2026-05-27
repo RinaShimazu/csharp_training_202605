@@ -95,4 +95,22 @@ public class DepartmentRegisterService : IDepartmentRegisterService
             throw;
         }
     }
+    public void DeleteDepartmentId(Department department)
+    {
+        try
+        {
+            // トランザクションの開始
+            _context.Database.BeginTransaction();
+            // 従業員の登録
+            _departmentRepository.DeleteDepartmentId(department);
+            // トランザクションのコミット
+            _context.Database.CommitTransaction();
+        }
+        catch
+        {
+            // トランザクションのロールバック
+            _context.Database.RollbackTransaction();
+            throw;
+        }
+    }
 }
