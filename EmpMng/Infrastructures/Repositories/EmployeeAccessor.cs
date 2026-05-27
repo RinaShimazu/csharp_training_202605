@@ -42,4 +42,23 @@ public class EmployeeAccessor
         _context.SaveChanges();
         return employee;
     }
+
+    /// <summary>
+    /// 商品を削除する
+    /// </summary>
+    /// <param name="item">削除対象の商品</param>
+    /// <returns>削除したエンティティ</returns>
+    public EmployeeEntity? DeleteEmployeeId(EmployeeEntity employee)
+    {
+        var result = _context.Employees.Find(employee.EmpId);
+        if (result == null)
+        {
+            return null;// 商品が見つからない場合はnullを返す
+        }
+        // 商品を削除する
+        var delResult = _context.Employees.Remove(result);
+        // 削除を永続化する
+        _context.SaveChanges();
+        return delResult.Entity;
+    }
 }

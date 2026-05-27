@@ -86,4 +86,12 @@ public class EmployeeRepository : IEmployeeRepository
         _context.Employees.Update(entity);
         _context.SaveChanges();
     }
+
+    public void DeleteEmployeeId(Employee employee)
+    {
+        var entity = _adapter.Convert(employee);
+
+        _context.Employees.Remove(entity);
+        _context.SaveChanges();
+    }
 }

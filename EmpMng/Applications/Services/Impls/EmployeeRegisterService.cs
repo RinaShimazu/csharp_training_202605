@@ -115,4 +115,23 @@ public class EmployeeRegisterService : IEmployeeRegisterService
             throw;
         }
     }
+
+    public void DeleteEmployeeId(Employee employee)
+    {
+        try
+        {
+            // トランザクションの開始
+            _context.Database.BeginTransaction();
+            // 従業員の登録
+            _employeeRepository.DeleteEmployeeId(employee);
+            // トランザクションのコミット
+            _context.Database.CommitTransaction();
+        }
+        catch
+        {
+            // トランザクションのロールバック
+            _context.Database.RollbackTransaction();
+            throw;
+        }
+    }
 }

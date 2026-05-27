@@ -28,4 +28,7 @@ public interface IEmployeeRegisterService
     /// 従業員を更新する
     /// </summary>
     void UpdateEmployeeId(Employee employee);
+    void DeleteEmployeeId(Employee employee);
+
+
 }
