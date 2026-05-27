@@ -19,7 +19,7 @@ public class EmployeeRepositoryTests
 
     private EmployeeRepository _repository = null!;
     private AppDbContext _context = null!;
-
+    private AppDbContext _contextFail = null!;//失敗する方のContext
     [TestInitialize]
     public void Setup()
     {
@@ -30,14 +30,29 @@ public class EmployeeRepositoryTests
             .Options;
 
         _context = new AppDbContext(options);
+        var optionsFail = new DbContextOptionsBuilder<AppDbContext>()
+           .UseNpgsql()
+           .Options;
 
+        _contextFail = new AppDbContext(optionsFail);
         var path = Path.Combine(AppContext.BaseDirectory, "sql", "init.sql");
         var sql = File.ReadAllText(path);
         _context.Database.ExecuteSqlRaw(sql);
 
         _repository = new EmployeeRepository(_context, employeeAdapter);
     }
+    [TestMethod]
+    public void Create_Fail()
+    {
 
+        _repository = new EmployeeRepository(_contextFail, new EmployeeEntityAdapter());
+        var employee = new Employee(null, "森鷗外", null, 1);
+
+        var result = Assert.ThrowsException<InternalException>(() => _repository.Create(employee));
+        var expected = "社員の永続化ができませんでした。";
+        Assert.AreEqual(expected, result.Message);
+
+    }
     [TestMethod]
     public void Create_WhenCorrect()
     {

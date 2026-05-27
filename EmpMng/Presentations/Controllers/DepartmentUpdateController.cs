@@ -6,32 +6,32 @@ using EmpMng.Exceptions;
 
 namespace EmpMng.Presentations.Controllers;
 
+
 /// <summary>
 /// 従業員更新コントローラ
 /// </summary>
-[Route("EmployeeUpdate")]
-public class EmployeeUpdateController : Controller
+[Route("DepartmentUpdate")]
+public class DepartmentUpdateController : Controller
 {
-    private readonly ILogger<EmployeeUpdateController> _logger;
-    private readonly IEmployeeRegisterService _employeeRegisterService;
-
-    // 💡 型を「Register用」に一統し、変数名だけ更新でも違和感のない名前にしています
-    private readonly EmployeeRegisterViewModelAdapter _adapter;
-    private readonly TempDataStore<EmployeeRegisterViewModel> _empDataStore;
+    /*
+    private readonly ILogger<DepartmentUpdateController> _logger;
+    private readonly IDepartmentRegisterService _departmentRegisterService;
+    private readonly DepartmentRegisterViewModelAdapter _adapter;
+    private readonly TempDataStore<DepartmentRegisterViewModel> _deptDataStore;
 
     /// <summary>
     /// コンストラクタ
     /// </summary>
-    public EmployeeUpdateController(
-        ILogger<EmployeeUpdateController> logger, // 💡 ここも EmployeeUpdateController に修正
-        IEmployeeRegisterService employeeRegisterService,
-        EmployeeRegisterViewModelAdapter employeeRegisterViewModelAdapter,
-        TempDataStore<EmployeeRegisterViewModel> empDataStore)
+    public DepartmentUpdateController(
+        ILogger<DepartmentUpdateController> logger,
+        IDepartmentRegisterService departmentRegisterService,
+        DepartmentRegisterViewModelAdapter departmentRegisterViewModelAdapter,
+        TempDataStore<DepartmentRegisterViewModel> deptDataStore)
     {
         _logger = logger;
-        _employeeRegisterService = employeeRegisterService;
-        _adapter = employeeRegisterViewModelAdapter;
-        _empDataStore = empDataStore;
+        _departmentRegisterService = departmentRegisterService;
+        _adapter = departmentRegisterViewModelAdapter;
+        _deptDataStore = deptDataStore;
     }
 
     /// <summary>
@@ -40,28 +40,27 @@ public class EmployeeUpdateController : Controller
     [HttpGet("Enter")]
     public IActionResult Enter()
     {
-        // 最初は空のモデルを用意するだけ
-        var viewModel = _empDataStore.Load(this) ?? new EmployeeRegisterViewModel();
+        var viewModel = _deptDataStore.Load(this) ?? new DepartmentRegisterViewModel();
 
         PopulateDepartments(viewModel);
         return View(viewModel);
     }
 
     /// <summary>
-    /// 💡 追加ポイント②: 入力された社員番号からデータを検索して画面にセットする処理
+    /// 入力された社員番号からデータを検索
     /// </summary>
     [HttpPost("LoadEmployee")]
     public IActionResult LoadEmployee(EmployeeRegisterViewModel inputModel)
     {
-        if (inputModel.EmpId.HasValue)
+        if (inputModel.DeptId.HasValue)
         {
             try
             {
-                var employee = _employeeRegisterService.GetEmployeeId(inputModel.EmpId.Value);
+                var department = _departmentRegisterService.GetDepatmentId(inputModel.DeptId.Value);
 
-                if (employee != null)
+                if (department != null)
                 {
-                    var viewModel = _adapter.Convert(employee);
+                    var viewModel = _adapter.Convert(department);
 
                     PopulateDepartments(viewModel);
                     return View("Enter", viewModel);
@@ -69,7 +68,7 @@ public class EmployeeUpdateController : Controller
             }
             catch (NotFoundException ex)
             {
-                ModelState.AddModelError("EmpId", ex.Message);
+                ModelState.AddModelError("DeptId", ex.Message);
             }
         }
 
@@ -81,7 +80,7 @@ public class EmployeeUpdateController : Controller
     /// 入力画面の[完了]ボタンクリックアクションメソッド
     /// </summary>
     [HttpPost("Confirm")]
-    public IActionResult Confirm(EmployeeRegisterViewModel viewModel)
+    public IActionResult Confirm(DepartmentRegisterViewModel viewModel)
     {
         if (!ModelState.IsValid)
         {
@@ -91,7 +90,7 @@ public class EmployeeUpdateController : Controller
 
         if (viewModel.DeptId.HasValue && viewModel.DeptId.Value != 0)
         {
-            var department = _employeeRegisterService.GetById(viewModel.DeptId.Value);
+            var department = _depetmentRegisterService.GetById(viewModel.DeptId.Value);
             _logger.LogInformation($"部署Id:{viewModel.DeptId.Value}の部署を取得する");
 
             if (department != null)
@@ -112,9 +111,9 @@ public class EmployeeUpdateController : Controller
     /// 確認画面の[更新]ボタンクリックアクションメソッド
     /// </summary>
     [HttpPost("Register")]
-    public IActionResult Register(EmployeeRegisterViewModel viewModel)
+    public IActionResult Register(DepartmentRegisterViewModel viewModel)
     {
-        _empDataStore.Save(this, viewModel);
+        _deptDataStore.Save(this, viewModel);
         return RedirectToAction("Complete");
     }
 
@@ -124,16 +123,16 @@ public class EmployeeUpdateController : Controller
     [HttpGet("Complete")]
     public IActionResult Complete()
     {
-        EmployeeRegisterViewModel? viewModel = null;
-        viewModel = _empDataStore.Load(this);
+        DepartmentRegisterViewModel? viewModel = null;
+        viewModel = _deptDataStore.Load(this);
         if (viewModel == null)
         {
             return RedirectToAction("Enter");
         }
 
-        var employee = _adapter.Restore(viewModel!);
+        var department = _adapter.Restore(viewModel!);
 
-        _employeeRegisterService.UpdateEmployeeId(employee);
+        _departmentRegisterService.UpdateDepartmentId(department);
 
         return View(viewModel);
     }
@@ -157,5 +156,5 @@ public class EmployeeUpdateController : Controller
         var departments = _employeeRegisterService.GetDepartments();
         viewModel.SetDepartments(departments);
         _logger.LogInformation("部署リストを設定");
-    }
+    }*/
 }
