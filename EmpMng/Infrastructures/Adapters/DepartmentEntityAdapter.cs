@@ -21,17 +21,14 @@ IConverter<Department, DepartmentEntity>, IRestorer<Department, DepartmentEntity
         {
             DeptName = domain.Name!,
         };
-
         if (domain.Id != null)
         {
             entity.DeptId = domain.Id.Value;
         }
-
         if (domain.Area != null)
         {
             entity.Area = domain.Area.Value;
         }
-
         return entity;
     }
 

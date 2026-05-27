@@ -39,8 +39,6 @@ public class Employee
             throw new DomainException($"氏名は{MinLength}～{MaxLength}文字で入力してください");
     }
 
-
-
     /// <summary>
     /// 氏名を変更する
     /// </summary>

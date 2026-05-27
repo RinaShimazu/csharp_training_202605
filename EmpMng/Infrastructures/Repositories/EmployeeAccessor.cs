@@ -25,20 +25,17 @@ public class EmployeeAccessor
 
 
     /// <summary>
-    /// 商品を変更する
+    /// 社員を変更する
     /// </summary>
-    /// <param name="id">変更対象の商品の主キー値</param>
+    /// <param name="id">変更対象の社員の主キー値</param>
     /// <returns></returns>
     public EmployeeEntity UpdateById(EmployeeEntity employee)
     {
-
-        // 商品Idを指定して商品を取得する
         var result = _context.Employees.Find(employee.EmpId);
         if (employee == null)
         {
-            return null!; // 商品が見つからない場合はnullを返す
+            return null!;
         }
-        // 商品名と単価を変更する
         result!.EmpName = employee.EmpName;
         result.Gender = employee.Gender;
         // 変更を永続化する

@@ -89,7 +89,7 @@ public class EmployeeUpdateController : Controller
         if (viewModel.DeptId.HasValue && viewModel.DeptId.Value != 0)
         {
             var department = _employeeRegisterService.GetById(viewModel.DeptId.Value);
-            _logger.LogInformation($"部署Id:{viewModel.DeptId.Value}の部署を取得する");
+            _logger.LogInformation($"部門Id:{viewModel.DeptId.Value}の部門を取得する");
 
             if (department != null)
             {
@@ -153,6 +153,6 @@ public class EmployeeUpdateController : Controller
     {
         var departments = _employeeRegisterService.GetDepartments();
         viewModel.SetDepartments(departments);
-        _logger.LogInformation("部署リストを設定");
+        _logger.LogInformation("部門リストを設定");
     }
 }

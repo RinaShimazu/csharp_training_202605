@@ -13,18 +13,28 @@ public class EmployeeEntity
     [Key]
     [Column("id")]
     public int EmpId { get; set; }
-    [Column("name")]
+
     /// <summary>
     /// 従業員名
     /// </summary>
+    [Column("name")]
     public string EmpName { get; set; } = string.Empty;
+
     /// <summary>
     /// 所属部署Id(外部キー)
     /// </summary>
     [Column("dept_id")]
     public int? DeptId { get; set; }
+
+    /// <summary>
+    /// 性別ID
+    /// </summary>
     [Column("gender_id")]
     public int Gender { get; set; }
+
+    /// <summary>
+    /// 所属部門
+    /// </summary>
     [ForeignKey("DeptId")]
     public virtual DepartmentEntity? Department { get; set; }
 

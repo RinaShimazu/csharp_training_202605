@@ -7,7 +7,6 @@ namespace EmpMng.Presentations.Controllers
     public class AllEmployeeController : Controller
     {
         private readonly IEmployeeRepository _employeeRepository;
-
         public AllEmployeeController(IEmployeeRepository employeeRepository)
         {
             _employeeRepository = employeeRepository;
@@ -18,7 +17,6 @@ namespace EmpMng.Presentations.Controllers
             try
             {
                 List<Employee> employees = _employeeRepository.FindAll();
-
                 return View(employees);
             }
             catch (Exception)

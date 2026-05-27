@@ -63,7 +63,7 @@ public class DepartmentRegisterViewModel
 
     public override string ToString()
     {
-        return $"Name={DeptName} , Area={Area}";
+        return $"Id={DeptId},Name={DeptName} , Area={Area}";
     }
 
 }

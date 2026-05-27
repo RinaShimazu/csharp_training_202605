@@ -7,7 +7,6 @@ namespace EmpMng.Presentations.Controllers
     public class AllDepartmentController : Controller
     {
         private readonly IDepartmentRepository _departmentRepository;
-
         public AllDepartmentController(IDepartmentRepository departmentRepository)
         {
             _departmentRepository = departmentRepository;
@@ -18,7 +17,6 @@ namespace EmpMng.Presentations.Controllers
             try
             {
                 List<Department> departments = _departmentRepository.FindAll();
-
                 return View(departments);
             }
             catch (Exception)

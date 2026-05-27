@@ -19,9 +19,13 @@ public interface IDepartmentRegisterService
     Department GetDepartmentId(int id);
 
     /// <summary>
-    /// 新しい従業員を登録する
+    /// 新しい部門を登録する
     /// </summary>
     /// <param name="department"></param>
     void Register(Department department);
+
+    /// <summary>
+    /// 部門を更新する
+    /// </summary>
     void UpdateDepartmentId(Department department);
 }

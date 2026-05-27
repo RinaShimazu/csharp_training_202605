@@ -11,7 +11,12 @@ public interface IEmployeeRepository
     /// </summary>
     /// <param name="employee">永続化対象の従業員</param>
     void Create(Employee employee);
+    /// <summary>
+    /// すべての社員を取得する
+    /// </summary>
     Employee? FindById(int id);
-
+    /// <summary>
+    /// 従業員を更新する
+    /// </summary>
     void UpdateEmployeeId(Employee employee);
 }

@@ -93,6 +93,10 @@ public class EmployeeRegisterService : IEmployeeRegisterService
             throw;
         }
     }
+
+    /// <summary>
+    /// 従業員を更新する
+    /// </summary>
     public void UpdateEmployeeId(Employee employee)
     {
         try

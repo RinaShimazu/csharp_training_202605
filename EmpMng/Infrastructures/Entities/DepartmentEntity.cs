@@ -18,6 +18,9 @@ public class DepartmentEntity
     /// </summary> 
     [Column("name")]
     public string DeptName { get; set; } = string.Empty;
+    /// <summary>
+    /// 勤務地
+    /// </summary> 
     [Column("area_id")]
     public int Area { get; set; }
 }

@@ -15,7 +15,7 @@ public class DepartmentAccessor
     /// </summary>
     private readonly AppDbContext _context;
     /// <summary>
-    /// ドメインモデル:従業員と従業員エンティティの相互変換インターフェイスの実装
+    /// ドメインモデル:部門と部門エンティティの相互変換インターフェイスの実装
     /// </summary>
     public DepartmentAccessor(AppDbContext context, DepartmentEntityAdapter adapter)
     {
@@ -25,20 +25,18 @@ public class DepartmentAccessor
 
 
     /// <summary>
-    /// 商品を変更する
+    /// 部門を変更する
     /// </summary>
-    /// <param name="id">変更対象の商品の主キー値</param>
+    /// <param name="id">変更対象の部門の主キー値</param>
     /// <returns></returns>
     public DepartmentEntity UpdateDepartmentId(DepartmentEntity department)
     {
 
-        // 商品Idを指定して商品を取得する
         var result = _context.Departments.Find(department.DeptId);
         if (department == null)
         {
-            return null!; // 商品が見つからない場合はnullを返す
+            return null!;
         }
-        // 商品名と単価を変更する
         result!.DeptName = department.DeptName;
         result.Area = department.Area;
         // 変更を永続化する

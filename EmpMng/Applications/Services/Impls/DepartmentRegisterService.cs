@@ -4,7 +4,7 @@ using EmpMng.Exceptions;
 using EmpMng.Infrastructures.Context;
 namespace EmpMng.Applications.Services.Impls;
 /// <summary>
-/// 従業員登録サービスインターフェイスの実装
+/// 部門登録サービスインターフェイスの実装
 /// </summary>
 public class DepartmentRegisterService : IDepartmentRegisterService
 {
@@ -56,7 +56,7 @@ public class DepartmentRegisterService : IDepartmentRegisterService
     }
 
     /// <summary>
-    /// 新しい従業員を登録する
+    /// 新しい部門を登録する
     /// </summary>
     /// <param name="employee"></param>
     public void Register(Department department)
