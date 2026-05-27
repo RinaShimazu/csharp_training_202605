@@ -6,15 +6,15 @@
     <h1 class="display-4">部門管理メニュー</h1>
     <p class="lead">下のボタンから操作を選択してください。</p>
 
-    <div class="d-flex justify-content-center gap-3 mt-4">
-        <a class="btn btn-primary btn-lg" asp-controller="DepartmentRegister" asp-action="Enter">
-            部門登録を始める
+    <div class="d-flex flex-column align-items-center gap-3 mt-4 mx-auto" style="width:350px;">
+        <a class="btn btn-primary btn-lg w-100" asp-controller="DepartmentRegister" asp-action="Enter">
+            🆕 &ensp;&thinsp; 部門登録を始める
         </a>
-        <a class="btn btn-primary btn-lg" asp-controller="AllDepartment" asp-action="Show">
-            部門一覧を表示する
+        <a class="btn btn-primary btn-lg w-100" asp-controller="AllDepartment" asp-action="Show">
+            👀 &ensp; 部門一覧を表示する
         </a>
-        <a class="btn btn-primary btn-lg" asp-controller="DepartmentUpdate" asp-action="Enter">
-            部門の登録情報を変更する
+        <a class="btn btn-primary btn-lg w-100" asp-controller="DepartmentUpdate" asp-action="Enter">
+            🔄部門の登録情報を変更する
         </a>
     </div>
     <div>

@@ -5,16 +5,15 @@
 <div class="text-center mt-5">
     <h1 class="display-4">社員管理メニュー</h1>
     <p class="lead">下のボタンから操作を選択してください。</p>
-
-    <div class="d-flex justify-content-center gap-3 mt-4">
-        <a class="btn btn-primary btn-lg" asp-controller="EmployeeRegister" asp-action="Enter">
-            社員登録を始める
+    <div class="d-flex flex-column align-items-center gap-3 mt-4 mx-auto" style="width:350px;">
+        <a class=" btn btn-primary btn-lg w-100" asp-controller="EmployeeRegister" asp-action="Enter">
+            🆕 &ensp;&thinsp; 社員登録を始める
         </a>
-        <a class="btn btn-primary btn-lg" asp-controller="AllEmployee" asp-action="Show">
-            社員一覧を表示する
+        <a class="btn btn-primary btn-lg w-100" asp-controller="AllEmployee" asp-action="Show">
+            👀 &ensp; 社員一覧を表示する
         </a>
-        <a class="btn btn-primary btn-lg" asp-controller="EmployeeUpdate" asp-action="Enter">
-            社員の登録情報を変更する
+        <a class="btn btn-primary btn-lg w-100" asp-controller="EmployeeUpdate" asp-action="Enter">
+            🔄社員の登録情報を変更する
         </a>
     </div>
     <div>
