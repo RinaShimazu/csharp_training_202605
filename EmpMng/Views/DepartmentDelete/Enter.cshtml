@@ -1,0 +1,63 @@
+@using EmpMng.Presentations.ViewModels
+@model DepartmentRegisterViewModel
+@{
+    ViewData["Title"] = "部門登録削除(選択)";
+}
+<h2 class="text-center mt-4">@ViewData["Title"]</h2>
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-4 col-sm-6">
+
+            <form asp-action="LoadDepartment" asp-controller="DepartmentDelete" method="post"
+                  class="mb-4 p-3 border rounded bg-light">
+                <div class="mb-2">
+                    <label class="form-label font-weight-bold">削除する部門番号を入力</label>
+                    <input asp-for="DeptId" class="form-control" type="number" required />
+                    <span asp-validation-for="DeptId" class="text-danger"></span>
+
+                </div>
+                <button type="submit" class="btn btn-info w-100 text-white">部門データを読み込む</button>
+            </form>
+
+            <hr />
+
+            <form asp-action="Confirm" asp-controller="DepartmentDelete" method="post">
+
+                <input type="hidden" asp-for="DeptId" />
+                <input type="hidden" asp-for="DeptName" />
+                <input type="hidden" asp-for="Area" />
+
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <td class="fw-bold">@Html.DisplayNameFor(m => m.DeptName)</td>
+                            <td>@Html.DisplayFor(m => m.DeptName)</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">@Html.DisplayNameFor(m => m.Area)</td>
+                            <td>
+                                @(Model.Area == 1 ? "東京" : Model.Area == 2 ? "大阪" : "")
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-primary">完了</button>
+                </div>
+            </form>
+
+            <div class="mt-3">
+                <a asp-controller="SelectPage" asp-action="DepartmentSelect" class="btn btn-secondary">部門管理メニューに戻る</a>
+            </div>
+            <div>
+                <p>
+                    <a asp-action="Index" asp-controller="Home" class="btn btn-secondary mt-3 ms-2">
+                        トップページに戻る
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

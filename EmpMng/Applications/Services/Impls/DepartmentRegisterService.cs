@@ -99,18 +99,28 @@ public class DepartmentRegisterService : IDepartmentRegisterService
     {
         try
         {
-            // トランザクションの開始
             _context.Database.BeginTransaction();
-            // 従業員の登録
+
+            var employeesInDept = _context.Employees
+                                          .Where(e => e.DeptId == department.Id)
+                                          .ToList();
+
+            foreach (var employee in employeesInDept)
+            {
+                employee.DeptId = null;
+            }
+
+            _context.SaveChanges();
+
             _departmentRepository.DeleteDepartmentId(department);
-            // トランザクションのコミット
+
             _context.Database.CommitTransaction();
         }
         catch
         {
-            // トランザクションのロールバック
             _context.Database.RollbackTransaction();
             throw;
         }
     }
+
 }
