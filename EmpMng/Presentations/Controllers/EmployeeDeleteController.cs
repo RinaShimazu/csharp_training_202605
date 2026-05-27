@@ -60,6 +60,19 @@ public class EmployeeDeleteController : Controller
                 {
                     var viewModel = _adapter.Convert(employee);
 
+                    if (viewModel.DeptId.HasValue && viewModel.DeptId.Value != 0)
+                    {
+                        var department = _employeeRegisterService.GetById(viewModel.DeptId.Value);
+                        if (department != null)
+                        {
+                            viewModel.DeptName = string.IsNullOrEmpty(department.Name) ? "(名称未設定)" : department.Name;
+                        }
+                    }
+                    else
+                    {
+                        viewModel.DeptName = "未選択";
+                    }
+
                     PopulateDepartments(viewModel);
                     return View("Enter", viewModel);
                 }

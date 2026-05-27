@@ -21,6 +21,8 @@ public class DepartmentRegisterViewModel
     /// </summary>
     [Display(Name = "部門番号")]
     [Required(ErrorMessage = "{0}は入力必須です。")]
+    [Range(1, int.MaxValue, ErrorMessage = "無効な番号です。")]
+
     public int DeptId { get; set; } = 0;
 
     /// <summary>

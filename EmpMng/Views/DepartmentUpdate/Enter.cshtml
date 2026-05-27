@@ -14,6 +14,8 @@
                 <div class="mb-2">
                     <label class="form-label font-weight-bold">変更する部門番号を入力</label>
                     <input asp-for="DeptId" class="form-control" type="number" required />
+                    <span asp-validation-for="DeptId" class="text-danger"></span>
+
                 </div>
                 <button type="submit" class="btn btn-info w-100 text-white">部門データを読み込む</button>
             </form>
@@ -27,13 +29,11 @@
                 <div class="mb-3">
                     <label asp-for="DeptName" class="form-label"></label>
                     <input asp-for="DeptName" class="form-control" />
-                    <span asp-validation-for="DeptName" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
                     <label>勤務地</label>
                     <select asp-for="Area" asp-items="Model.AreaList" class="form-control"></select>
-                    <span asp-validation-for="Area" class="text-danger"></span>
                 </div>
                 <p>
                     <div class="text-center">

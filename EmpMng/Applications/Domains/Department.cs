@@ -54,6 +54,11 @@ public class Department
                 throw new DomainException($"部署名は{MinLength}～{MaxLength}文字で入力してください");
         }
     }
+    private void ValidateId(int id)
+    {
+        if (id < 1)
+            throw new DomainException("無効な番号です");
+    }
 
     /// <summary>
     /// 部署名の変更

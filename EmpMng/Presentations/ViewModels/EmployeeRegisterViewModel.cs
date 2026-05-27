@@ -21,6 +21,7 @@ public class EmployeeRegisterViewModel
     /// 所属部署ID
     /// </summary>
     [Display(Name = "所属部門")]
+    [Range(1, int.MaxValue, ErrorMessage = "無効な番号です。")]
     public int? DeptId { get; set; } = null;
 
     /// <summary>
@@ -71,6 +72,7 @@ public class EmployeeRegisterViewModel
     // 部署のリスト
     public List<SelectListItem>? Departments { get; set; } = null;
 
+    [Range(1, int.MaxValue, ErrorMessage = "無効な番号です。")]
     public int? EmpId { get; set; }
 
     public string? EmpName
