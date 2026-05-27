@@ -12,13 +12,11 @@
             </div>
             <table class="table table-hover">
                 <tbody>
-                    @*登録した従業員と所属部署を表示する*@
                     <tr>
                         <td class="fw-bold">@Html.DisplayNameFor(m => m.DeptName)</td>
                         <td>@Html.DisplayFor(m => m.DeptName)</td>
                     </tr>
                     <tr>
-                        @*EmployeeRegisterViewModelのNameプロパティの値を表示する*@
                         <td class="fw-bold">@Html.DisplayNameFor(m => m.Area)</td>
                         <td>
                             @(Model.Area == 1 ? "東京" : Model.Area == 2 ? "大阪" : "--未選択--")
@@ -26,11 +24,9 @@
                     </tr>
                 </tbody>
             </table>
-            @*入力画面に戻る*@
             <a asp-action="Enter" asp-controller="DepartmentRegister" class="btn btn-primary mt-3">
                 続けて登録する
             </a>
-            @*メニューに戻る*@
             <p>
                 <a asp-action="Index" asp-controller="Home" class="btn btn-secondary mt-3 ms-2">
                     トップページに戻る

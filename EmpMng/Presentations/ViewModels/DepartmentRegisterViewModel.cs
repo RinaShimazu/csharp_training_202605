@@ -21,7 +21,7 @@ public class DepartmentRegisterViewModel
     /// </summary>
     [Display(Name = "部門番号")]
     [Required(ErrorMessage = "{0}は入力必須です。")]
-    public int DeptId { get; set; }
+    public int DeptId { get; set; } = 0;
 
     /// <summary>
     /// 部署のリストをSelectListItemのリストに変換してプロパティに設定する

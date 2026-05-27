@@ -16,7 +16,7 @@ public class DepartmentRegisterViewModelAdapter : IRestorer<Department, Departme
     /// <returns>ドメインオブジェクト:Employee</returns>
     public Department Restore(DepartmentRegisterViewModel target)
     {
-        var department = new Department(null, target.DeptName, target.Area ?? 0);
+        var department = new Department(target.DeptId, target.DeptName, target.Area ?? 0);
         return department;
     }
     public DepartmentRegisterViewModel Convert(Department domain)

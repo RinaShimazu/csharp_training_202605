@@ -20,7 +20,6 @@
                 <tr>
                     <td>@emp.Id</td>
                     <td>@emp.Name</td>
-                    <!-- ドメインモデル内のDepartmentオブジェクトから名前を表示 -->
                     <td>@(emp.Department?.Name ?? "未配属")</td>
                     <td>@(emp.Gender == 1 ? "男性" : emp.Gender == 2 ? "女性" : emp.Gender == 3 ? "その他" : "--未選択--")</td>
                 </tr>
