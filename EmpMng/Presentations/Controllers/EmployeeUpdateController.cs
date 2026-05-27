@@ -140,8 +140,6 @@ public class EmployeeUpdateController : Controller
 
         var employee = _adapter.Restore(viewModel!);
 
-        // 💡 登録(Register)ではなく、更新(Update)を呼び出す
-        // ※ サービス側に「Update(Employee employee)」というメソッドを追加してください！
         _employeeRegisterService.UpdateEmployeeId(employee);
 
         return View(viewModel);

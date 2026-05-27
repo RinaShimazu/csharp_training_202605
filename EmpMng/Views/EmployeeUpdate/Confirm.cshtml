@@ -28,11 +28,12 @@
             </tbody>
         </table>
 
-        <form asp-action="Complete" asp-controller="EmployeeUpdate" method="post">
+        <form asp-action="Register" asp-controller="EmployeeUpdate" method="post">
             <input type="hidden" asp-for="Name" />
             <input type="hidden" asp-for="DeptId" />
             <input type="hidden" asp-for="DeptName" />
             <input type="hidden" asp-for="Gender" />
+            <input type="hidden" asp-for="EmpId" />
 
             <p>
                 <div class="text-center">
