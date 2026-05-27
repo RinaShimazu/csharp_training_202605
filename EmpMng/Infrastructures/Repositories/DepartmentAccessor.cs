@@ -7,12 +7,7 @@ using EmpMng.Infrastructures.Adapters;
 using EmpMng.Exceptions;
 
 namespace EmpMng.Infrastructures.Repositories;
-/// <summary>
-/// itemテーブルにアクセスするクラス
-/// </summary>
-/// <author>Fullness,Inc.</author>
-/// <date>2025-11-16</date>
-/// <version>1.0.0</version>
+
 public class DepartmentAccessor
 {
     /// <summary>
@@ -34,7 +29,7 @@ public class DepartmentAccessor
     /// </summary>
     /// <param name="id">変更対象の商品の主キー値</param>
     /// <returns></returns>
-    public DepartmentEntity UpdateById(DepartmentEntity department)
+    public DepartmentEntity UpdateDepartmentId(DepartmentEntity department)
     {
 
         // 商品Idを指定して商品を取得する

@@ -83,7 +83,7 @@ public class DepartmentRepository : IDepartmentRepository
                 "部門の永続化ができませんでした。", e);
         }
     }
-    public void UpdateById(Department department)
+    public void UpdateDepartmentId(Department department)
     {
         var entity = _adapter.Convert(department);
         _context.Departments.Update(entity);

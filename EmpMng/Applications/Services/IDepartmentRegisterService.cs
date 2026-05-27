@@ -16,11 +16,12 @@ public interface IDepartmentRegisterService
     /// </summary>
     /// <param name="id">部署Id</param>
     /// <returns></returns>
-    Department GetById(int id);
+    Department GetDepartmentId(int id);
 
     /// <summary>
     /// 新しい従業員を登録する
     /// </summary>
     /// <param name="department"></param>
     void Register(Department department);
+    void UpdateDepartmentId(Department department);
 }

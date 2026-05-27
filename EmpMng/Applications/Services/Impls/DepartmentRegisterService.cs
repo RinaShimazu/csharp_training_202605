@@ -36,7 +36,7 @@ public class DepartmentRegisterService : IDepartmentRegisterService
     /// </summary>
     /// <param name="id">部署Id</param>
     /// <returns></returns>
-    public Department GetById(int id)
+    public Department GetDepartmentId(int id)
     {
         var result = _departmentRepository.FindById(id)!;
         if (result == null)
@@ -67,6 +67,24 @@ public class DepartmentRegisterService : IDepartmentRegisterService
             _context.Database.BeginTransaction();
             // 従業員の登録
             _departmentRepository.Create(department);
+            // トランザクションのコミット
+            _context.Database.CommitTransaction();
+        }
+        catch
+        {
+            // トランザクションのロールバック
+            _context.Database.RollbackTransaction();
+            throw;
+        }
+    }
+    public void UpdateDepartmentId(Department department)
+    {
+        try
+        {
+            // トランザクションの開始
+            _context.Database.BeginTransaction();
+            // 従業員の登録
+            _departmentRepository.UpdateDepartmentId(department);
             // トランザクションのコミット
             _context.Database.CommitTransaction();
         }

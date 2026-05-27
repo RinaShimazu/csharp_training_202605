@@ -13,7 +13,7 @@ namespace EmpMng.Presentations.Controllers;
 [Route("DepartmentUpdate")]
 public class DepartmentUpdateController : Controller
 {
-    /*
+
     private readonly ILogger<DepartmentUpdateController> _logger;
     private readonly IDepartmentRegisterService _departmentRegisterService;
     private readonly DepartmentRegisterViewModelAdapter _adapter;
@@ -50,13 +50,13 @@ public class DepartmentUpdateController : Controller
     /// 入力された社員番号からデータを検索
     /// </summary>
     [HttpPost("LoadEmployee")]
-    public IActionResult LoadEmployee(EmployeeRegisterViewModel inputModel)
+    public IActionResult LoadEmployee(DepartmentRegisterViewModel inputModel)
     {
-        if (inputModel.DeptId.HasValue)
+        if (inputModel.DeptId != 0)
         {
             try
             {
-                var department = _departmentRegisterService.GetDepatmentId(inputModel.DeptId.Value);
+                var department = _departmentRegisterService.GetDepartmentId(inputModel.DeptId);
 
                 if (department != null)
                 {
@@ -88,10 +88,10 @@ public class DepartmentUpdateController : Controller
             return View("Enter", viewModel);
         }
 
-        if (viewModel.DeptId.HasValue && viewModel.DeptId.Value != 0)
+        if (viewModel.DeptId != 0)
         {
-            var department = _depetmentRegisterService.GetById(viewModel.DeptId.Value);
-            _logger.LogInformation($"部署Id:{viewModel.DeptId.Value}の部署を取得する");
+            var department = _departmentRegisterService.GetDepartmentId(viewModel.DeptId);
+            _logger.LogInformation($"部署Id:{viewModel.DeptId}の部署を取得する");
 
             if (department != null)
             {
@@ -101,7 +101,7 @@ public class DepartmentUpdateController : Controller
         else
         {
             viewModel.DeptName = "未選択";
-            viewModel.DeptId = null;
+            viewModel.DeptId = 0;
         }
 
         return View(viewModel);
@@ -141,20 +141,20 @@ public class DepartmentUpdateController : Controller
     /// 確認画面の[戻る]ボタンクリックアクションメソッド
     /// </summary>
     [HttpPost("Back")]
-    public IActionResult Back(EmployeeRegisterViewModel viewModel)
+    public IActionResult Back(DepartmentRegisterViewModel viewModel)
     {
         _logger.LogInformation("[戻る]ボタンクリック:{0}", viewModel!.ToString());
-        _empDataStore.Save(this, viewModel);
+        _deptDataStore.Save(this, viewModel);
         return RedirectToAction("Enter");
     }
 
     /// <summary>
     /// 部署一覧を取得してViewModelに設定する
     /// </summary>
-    private void PopulateDepartments(EmployeeRegisterViewModel viewModel)
+    private void PopulateDepartments(DepartmentRegisterViewModel viewModel)
     {
-        var departments = _employeeRegisterService.GetDepartments();
+        var departments = _departmentRegisterService.GetDepartments();
         viewModel.SetDepartments(departments);
         _logger.LogInformation("部署リストを設定");
-    }*/
+    }
 }

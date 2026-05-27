@@ -19,4 +19,15 @@ public class DepartmentRegisterViewModelAdapter : IRestorer<Department, Departme
         var department = new Department(null, target.DeptName, target.Area ?? 0);
         return department;
     }
+    public DepartmentRegisterViewModel Convert(Department domain)
+    {
+        var viewModel = new DepartmentRegisterViewModel
+        {
+            DeptId = domain.Id ?? 0,
+            DeptName = domain.Name,
+            Area = domain.Area,
+        };
+
+        return viewModel;
+    }
 }

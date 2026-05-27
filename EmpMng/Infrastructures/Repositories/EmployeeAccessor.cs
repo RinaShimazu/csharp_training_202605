@@ -7,12 +7,7 @@ using EmpMng.Infrastructures.Adapters;
 using EmpMng.Exceptions;
 
 namespace EmpMng.Infrastructures.Repositories;
-/// <summary>
-/// itemテーブルにアクセスするクラス
-/// </summary>
-/// <author>Fullness,Inc.</author>
-/// <date>2025-11-16</date>
-/// <version>1.0.0</version>
+
 public class EmployeeAccessor
 {
     /// <summary>

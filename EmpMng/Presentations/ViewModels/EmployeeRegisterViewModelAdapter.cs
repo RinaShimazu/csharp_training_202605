@@ -35,7 +35,6 @@ public class EmployeeRegisterViewModelAdapter : IRestorer<Employee, EmployeeRegi
         {
             EmpId = domain.Id,
             EmpName = domain.Name,
-            // 💡 変更ポイント: C#の正しい条件演算子(三項演算子)に修正しました
             Gender = domain.Gender,
             DeptId = domain.Department?.Id
         };

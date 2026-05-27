@@ -14,8 +14,6 @@ public class EmployeeUpdateController : Controller
 {
     private readonly ILogger<EmployeeUpdateController> _logger;
     private readonly IEmployeeRegisterService _employeeRegisterService;
-
-    // 💡 型を「Register用」に一統し、変数名だけ更新でも違和感のない名前にしています
     private readonly EmployeeRegisterViewModelAdapter _adapter;
     private readonly TempDataStore<EmployeeRegisterViewModel> _empDataStore;
 
@@ -23,7 +21,7 @@ public class EmployeeUpdateController : Controller
     /// コンストラクタ
     /// </summary>
     public EmployeeUpdateController(
-        ILogger<EmployeeUpdateController> logger, // 💡 ここも EmployeeUpdateController に修正
+        ILogger<EmployeeUpdateController> logger,
         IEmployeeRegisterService employeeRegisterService,
         EmployeeRegisterViewModelAdapter employeeRegisterViewModelAdapter,
         TempDataStore<EmployeeRegisterViewModel> empDataStore)
@@ -40,7 +38,6 @@ public class EmployeeUpdateController : Controller
     [HttpGet("Enter")]
     public IActionResult Enter()
     {
-        // 最初は空のモデルを用意するだけ
         var viewModel = _empDataStore.Load(this) ?? new EmployeeRegisterViewModel();
 
         PopulateDepartments(viewModel);
@@ -48,7 +45,7 @@ public class EmployeeUpdateController : Controller
     }
 
     /// <summary>
-    /// 💡 追加ポイント②: 入力された社員番号からデータを検索して画面にセットする処理
+    /// 入力された社員番号からデータを検索
     /// </summary>
     [HttpPost("LoadEmployee")]
     public IActionResult LoadEmployee(EmployeeRegisterViewModel inputModel)
