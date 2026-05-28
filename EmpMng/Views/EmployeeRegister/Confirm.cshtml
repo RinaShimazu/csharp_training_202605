@@ -34,12 +34,17 @@
             <input type="hidden" asp-for="DeptName" />
             <input type="hidden" asp-for="Gender" />
             <div class="text-center mt-4">
-                <button type="submit" formaction="@Url.Action("Register", "EmployeeRegister")" formmethod="post"
-                        class="btn btn-primary">登録</button>
-                <button type="submit" formaction="@Url.Action("Back", "EmployeeRegister")" formmethod="post"
-                        class="btn btn-secondary">戻る</button>
+                <div class="mt-3">
+                    <a asp-controller="EmployeeRegister" asp-action="Enter" class="btn btn-secondary">戻る</a>
+                </div>
+            </form>
+            <div>
+                <p>
+                    <a asp-action="Index" asp-controller="Home" class="btn btn-secondary mt-3 ms-2">
+                        トップページに戻る
+                    </a>
+                </p>
             </div>
-        </form>
+        </div>
     </div>
-</div>
 </div>
