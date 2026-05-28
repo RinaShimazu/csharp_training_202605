@@ -77,10 +77,12 @@ public class DepartmentRegisterController : Controller
     [HttpPost("Confirm")]
     public IActionResult Confirm(DepartmentRegisterViewModel viewModel)
     {
+        //部署idのチェックを除外する
+        ModelState.Remove(nameof(viewModel.DeptId));
         // バリデーションチェック
-        if (!ModelState.IsValid) // バリデーションエラーあり
+        if (!ModelState.IsValid)
         {
-            // 入力画面の表示
+
             return View("Enter", viewModel);
         }
 
