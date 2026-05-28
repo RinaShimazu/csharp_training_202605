@@ -55,6 +55,11 @@ public class DepartmentRegisterService : IDepartmentRegisterService
         return _departmentRepository.FindAll();
     }
 
+    public List<Department> GetAreaLists()
+    {
+        return _departmentRepository.FindAll();
+    }
+
     /// <summary>
     /// 新しい部門を登録する
     /// </summary>

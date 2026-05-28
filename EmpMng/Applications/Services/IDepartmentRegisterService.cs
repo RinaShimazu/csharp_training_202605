@@ -1,4 +1,5 @@
 using EmpMng.Applications.Domains;
+using Microsoft.AspNetCore.Mvc;
 namespace EmpMng.Applications.Services;
 /// <summary>
 /// 従業員登録サービスインターフェイス

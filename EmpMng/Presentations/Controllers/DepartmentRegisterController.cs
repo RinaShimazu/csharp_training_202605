@@ -56,9 +56,8 @@ public class DepartmentRegisterController : Controller
             // 部署登録ViewModelを生成する
             viewModel = new DepartmentRegisterViewModel();
 
-            // 現存する部署一覧から、次のID（最大値 + 1）を計算して初期値としてセットする
             var departments = _departmentRegisterService.GetDepartments();
-            int nextId = 1; // 1件もない場合は1からスタート
+            int nextId = 1;
             if (departments != null && departments.Any())
             {
                 nextId = (departments.Max(d => d.Id) ?? 0) + 1;
@@ -84,7 +83,6 @@ public class DepartmentRegisterController : Controller
             // 入力画面の表示
             return View("Enter", viewModel);
         }
-
 
         _logger.LogInformation($" 登録する部署名:{viewModel.DeptName}");
 

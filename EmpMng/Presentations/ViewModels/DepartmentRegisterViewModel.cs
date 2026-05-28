@@ -58,8 +58,7 @@ public class DepartmentRegisterViewModel
     /// </summary>
     public List<SelectListItem> AreaList { get; set; } = new List<SelectListItem>
     {
-        new SelectListItem{ Text="--未選択--", Value="" , Selected = true },
-        new SelectListItem{ Text= "東京", Value= "1" },
+        new SelectListItem{ Text= "東京", Value= "1",Selected = true },
         new SelectListItem{ Text= "大阪", Value= "2" }
     };
 
